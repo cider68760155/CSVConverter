@@ -10,24 +10,25 @@ Options:
 '''
 import csv
 import os
+import sys
 from docopt import docopt
 
 
 def CheckArgs(args):
     if args['INPUT'] is None:
         print('csvファイルを指定してください')
-        exit()
+        sys.exit()
     if not os.path.isfile(args['INPUT']):
         print('csvファイルが見つかりませんでした')
-        exit()
+        sys.exit()
     if not os.path.isfile(args['--format']):
         print('フォーマットファイルが見つかりませんでした')
-        exit()
+        sys.exit()
     if os.path.isfile(args['--output']):
         print(args['--output'] + 'はすでに存在します')
         print('上書きしますか(y/N)')
         if input() != 'y':
-            exit()
+            sys.exit()
 
 
 def getCsvDictList(fileName):
@@ -42,7 +43,7 @@ def getCsvDictList(fileName):
         return retvals
     except:
         print('csvファイルの読み込みに失敗しました')
-        exit()
+        sys.exit()
 
 
 def main():
