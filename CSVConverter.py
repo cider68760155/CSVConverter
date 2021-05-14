@@ -33,7 +33,7 @@ def CheckArgs(args):
 def getCsvDictList(fileName):
     try:
         retvals = []
-        with open(fileName) as f:
+        with open(fileName, encoding="utf_8_sig") as f:
             for row in csv.reader(f):
                 retval = {}
                 for i, val in enumerate(row):
