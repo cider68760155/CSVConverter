@@ -5,8 +5,8 @@ Usage: csvConverter.exe [-f FILE] [-o FILE] [INPUT]
 
 Options: 
     -h, --help              ヘルプを表示します
-    -f FILE, --format FILE  フォーマットファイルを指定します [default: ./format.txt]
-    -o FILE, --output FILE  出力先ファイルを指定します [default: ./result.txt]
+    -f FILE, --format FILE  フォーマットファイルを指定します [default: format.txt]
+    -o FILE, --output FILE  出力先ファイルを指定します [default: result.txt]
 '''
 import csv
 import os
@@ -48,6 +48,7 @@ def getCsvDictList(fileName):
 def main():
     try:
         args = docopt(__doc__)
+        CheckArgs(args)
         csvList = getCsvDictList(args['INPUT'])
         with open(args['--format']) as f:
             formatText = f.read()
